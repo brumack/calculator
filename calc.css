@@ -1,0 +1,44 @@
+.container-fluid {
+  height:33vh;
+  position:relative;
+  top:33vh;
+}
+
+#screen {
+  height:5vh;
+  background-color: darkgray;
+  border-color: black;
+  border-width:5px;
+  border-style: solid;
+  text-align:right;
+}
+
+.opp {
+  background-color: orange;
+  border-color: black;
+  border-width:5px;
+  border-style: solid;
+  text-align:center;
+}
+
+.num {
+  background-color: lightgray;
+  border-color:black;
+  border-width:5px;
+  border-style:solid;
+  color:black;
+  text-align:center;
+}
+
+.spec {
+  background-color: gray;
+  border-color:black;
+  border-width:5px;
+  border-style:solid;
+  color:black;
+  text-align:center;
+}
+
+.spec:hover, .num:hover, .opp:hover {
+  opacity:.5;
+}
