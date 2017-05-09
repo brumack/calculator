@@ -1,82 +1,101 @@
 $("document").ready(function() {
 
-var numerArray = [0,1,2,3,4,5,6,7,8,9];
-var oppArray = ['a','s','m','d'];
-var symbolArray = ['+', '-', 'x', '/'];
+  var inputArray = [];
+  var decimal = false;
+  var value = 0;
+  var memory = null;
+  var opperation = '';
+  var ASDM = '';
+  var result = 0; 
 
-var ans = 0;
-var entry = [];
-var number = 0;
+//-------------------------------------------------
 
-var add = function(ans, number) {
-  return ans + number;
-}
+    $('#clear').click(function() {
+      inputArray = [];
+      decimal = false;
+      value = 0;
+      memory = null;
+      opperation = '';
+      ASDM = '';
+      result = 0;
+      $('#screen').html('0');
+    })
 
-var sub = function(ans, number) {
-  return ans - number;
-}
+//-------------------------------------------------
 
-var mult = function(ans, number) {
-  return ans * number;
-}
+    $('.num').click(function() {
 
-var divide = function(ans, number) {
-  return ans / number;
-}
+      if (inputArray.length == 0)  //resets screen upon entry of new number
+        $('#screen').html('');
 
-$('#zero').click(function() {
-  entry.push('0');
-  $('#screen').append('0')
-});
+      if (inputArray.length < 9) // keeps entry length below 10 characters
+        value = $(this).attr('id');
 
-$('#one').click(function() {
-  entry.push('1');
-  $('#screen').append('1');
-});
+      if (value != '.') {  //checks for decimal
+        inputArray.push(value);
 
-$('#two').click(function() {
-  entry.push('2');
-  $('#screen').append('2');
-});
+        if (inputArray[0] == 0) //ensures no leading 0s in entry
+          inputArray.shift();
+        else
+          $('#screen').append(value);
+      }
 
-$('#three').click(function() {
-  entry.push('3');
-  $('#screen').append('3');
-});
+      else if (decimal === false) {  //ensures that only one decimal is allowed
+        inputArray.push(value);
+        $('#screen').append(value);
+        decimal = true;
+      }
+    });
 
-$('#four').click(function() {
-  entry.push('4');
-  $('#screen').append('4');
-});
+//-------------------------------------------------
 
-$('#five').click(function() {
-  entry.push('5');
-  $('#screen').append('5');
-});
+    $('.opp').click(function() {
+      if (memory == null) {      // checks to see if first number (no memory)
+        if (inputArray.length != 0) {
+        ASDM = $(this).attr('id');  // assigns function based on button id
+        memory = Number(inputArray.join('')); // joins array to number
+        inputArray = []; // resets input
+        }
+      }
 
-$('#six').click(function() {
-  entry.push('6');
-  $('#screen').append('6');
-});
+      else if (inputArray.length == 0)
+        ADSM = $(this).attr('id');
 
-$('#seven').click(function() {
-  entry.push('7');
-  $('#screen').append('7');
-});
+      else {
+        // calculation - sends first number from memory, converted array
+        // from second entry, and the opperation to be completed
+        result = doMath(memory, Number(inputArray.join('')), ASDM);
+        ASDM = $(this).attr('id');
+        memory = result;  // sends result to memory
+        inputArray = [];  // resets input
+        $('#screen').html(result); // sends result to screen;
+      }
 
-$('#eight').click(function() {
-  entry.push('8');
-  $('#screen').append('8');
-});
+      decimal = false; // resets decimal bool
+    });
 
-$('#nine').click(function() {
-  entry.push('9');
-  $('#screen').append('9');
-});
+//-------------------------------------------------
 
-$('.opp').click(function() {
-  number = entry.join('');
-  console.log(number);
-});
+    var doMath = function(val1, val2, expression) {
+      switch (expression) {
+        case 'divide':
+          return (val1 / val2);
+          break;
+        case 'multiply':
+          return (val1 * val2);
+          break;
+        case 'add':
+          return (val1 + val2);
+          break;
+        case 'subtract':
+          return (val1 - val2);
+          break;
+        case 'equal':
+          return val1;
+          break;
+        default :
+          console.log('error: ' + expression);
+      }
+    }
 
 });
