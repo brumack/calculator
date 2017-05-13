@@ -5,8 +5,7 @@
   <HEAD>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type = "text/css" href="calc.css">
-    <link href="https://fonts.googleapis.com/css?family=Anton|Lobster" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="calc.js"></script>
   </HEAD>
 
@@ -14,82 +13,83 @@
     <div class = "container-fluid">
       <div class = "row">
         <div id = "screen" class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+          0
         </div>
       </div>
       <div class = "row">
-        <div id = "row1" class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
-          <div id = "clear" class = "spec col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            C
+        <div class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+          <div id = "C" class = "spec opp but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>C</p>
           </div>
-          <div id = "evenOdd" class = "spec col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            +/-
+          <div id = "evenOdd" class = "spec but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>+/-</p>
           </div>
-          <div id = "percent" class = "spec col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            %
+          <div id = "percent" class = "spec but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>%</p>
           </div>
-          <div id = "divide" class = "opp col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            /
-          </div>
-        </div>
-      </div>
-      <div class = "row">
-        <div id = "row2" class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
-          <div id = "7" value = "7" class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            7
-          </div>
-          <div id = "8" value = "8" class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            8
-          </div>
-          <div id = "9" value = "9" class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            9
-          </div>
-          <div id = "multiply" class = "opp col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            x
+          <div id = "/" class = "opp but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>/</p>
           </div>
         </div>
       </div>
       <div class = "row">
-        <div id = "row3" class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
-          <div id = "4" value = "4" class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            4
+        <div class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+          <div id = "7" class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>7</p>
           </div>
-          <div id = "5" value = "5" class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            5
+          <div id = "8" class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>8</p>
           </div>
-          <div id = "6" value = "6" class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            6
+          <div id = "9" class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>9</p>
           </div>
-          <div id = "subtract" class = "opp col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            -
-          </div>
-        </div>
-      </div>
-      <div class = "row">
-        <div id = "row4" class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
-          <div id = "1"  value = "1" class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            1
-          </div>
-          <div id = "2" value = "2" class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            2
-          </div>
-          <div id = "3" value = "3" class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            3
-          </div>
-          <div id = "add" class = "opp col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            +
+          <div id = "x" class = "opp but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>x</p>
           </div>
         </div>
       </div>
       <div class = "row">
-        <div id = "row5" class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
-          <div id = "0" class = "num col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
-            0
+        <div class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+          <div id = "4" class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>4</p>
           </div>
-          <div id = "." class = "num col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            .
+          <div id = "5" class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>5</p>
           </div>
-          <div id = "eq" class = "opp col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            =
+          <div id = "6" class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>6</p>
+          </div>
+          <div id = "-" class = "opp but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>-</p>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+          <div id = "1" class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>1</p>
+          </div>
+          <div id = "2" class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>2</p>
+          </div>
+          <div id = "3" class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>3</p>
+          </div>
+          <div id = "+" class = "opp but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>+</p>
+          </div>
+        </div>
+      </div>
+      <div class = "row">
+        <div class = "col-xl-4 col-xl-offset-4 col-lg-4 col-lg-offset-4 col-md-4 col-md-offset-4">
+          <div id = "0" class = "num but col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <p>0</p>
+          </div>
+          <div id = "." class = "num but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>.</p>
+          </div>
+          <div id = "=" class = "opp but col-xl-3 col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <p>=</p>
           </div>
         </div>
       </div>

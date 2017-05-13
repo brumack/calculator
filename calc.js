@@ -1,101 +1,134 @@
+//rewriting. completed number click. finished opperator click - add.
+
+
+
 $("document").ready(function() {
 
-  var inputArray = [];
+  var entryArray = [];
+  valArray = [];
+  opArray = [];
+  var entry = 0;
   var decimal = false;
-  var value = 0;
-  var memory = null;
-  var opperation = '';
-  var ASDM = '';
-  var result = 0; 
+  var result = 0;
 
-//-------------------------------------------------
-
-    $('#clear').click(function() {
-      inputArray = [];
-      decimal = false;
-      value = 0;
-      memory = null;
-      opperation = '';
-      ASDM = '';
-      result = 0;
-      $('#screen').html('0');
-    })
-
-//-------------------------------------------------
-
-    $('.num').click(function() {
-
-      if (inputArray.length == 0)  //resets screen upon entry of new number
-        $('#screen').html('');
-
-      if (inputArray.length < 9) // keeps entry length below 10 characters
-        value = $(this).attr('id');
-
-      if (value != '.') {  //checks for decimal
-        inputArray.push(value);
-
-        if (inputArray[0] == 0) //ensures no leading 0s in entry
-          inputArray.shift();
-        else
-          $('#screen').append(value);
+  var clear = function() {
+    entryArray = [];
+    decimal = false;
+    valArray = [];
+    opArray = [];
+    $('#screen').html('0');
+  }
+  var doMath = function(operation, val1, val2) {
+    switch(operation) {
+      case '+': {
+        return (val1 + val2);
+        break;
       }
-
-      else if (decimal === false) {  //ensures that only one decimal is allowed
-        inputArray.push(value);
-        $('#screen').append(value);
-        decimal = true;
+      case '-': {
+        return (val1 - val2);
+        break;
       }
-    });
-
-//-------------------------------------------------
-
-    $('.opp').click(function() {
-      if (memory == null) {      // checks to see if first number (no memory)
-        if (inputArray.length != 0) {
-        ASDM = $(this).attr('id');  // assigns function based on button id
-        memory = Number(inputArray.join('')); // joins array to number
-        inputArray = []; // resets input
-        }
+      case 'x': {
+        return (val1 * val2).toPrecision(9);
+        break;
       }
-
-      else if (inputArray.length == 0)
-        ADSM = $(this).attr('id');
-
-      else {
-        // calculation - sends first number from memory, converted array
-        // from second entry, and the opperation to be completed
-        result = doMath(memory, Number(inputArray.join('')), ASDM);
-        ASDM = $(this).attr('id');
-        memory = result;  // sends result to memory
-        inputArray = [];  // resets input
-        $('#screen').html(result); // sends result to screen;
+      case '/': {
+        return (val1 / val2).toPrecision(9);
+        break;
       }
-
-      decimal = false; // resets decimal bool
-    });
-
-//-------------------------------------------------
-
-    var doMath = function(val1, val2, expression) {
-      switch (expression) {
-        case 'divide':
-          return (val1 / val2);
-          break;
-        case 'multiply':
-          return (val1 * val2);
-          break;
-        case 'add':
-          return (val1 + val2);
-          break;
-        case 'subtract':
-          return (val1 - val2);
-          break;
-        case 'equal':
-          return val1;
-          break;
-        default :
-          console.log('error: ' + expression);
+      case '=': {
+        return val1;
+      }
+      case 'C': {
+        clear();
+        return null;
+      }
+      default: {
+        console.log('error');
+        clear();
       }
     }
+  }
 
+  $('.num').click(function() {
+
+    if (opArray[0] == '=') {
+      console.log('clear');
+      clear();
+    }
+
+    if (entryArray.length == 0)
+      $('#screen').html('');
+
+    entry = $(this).attr('id');
+
+    if (entryArray.length < 10) {
+      if (decimal === false && entry == ".") {
+        decimal = true;
+        $('#screen').append(entry);
+        entryArray.push(entry);
+      }
+      else if (entry != '.') {
+        $('#screen').append(entry);
+        entryArray.push(entry);
+      }
+
+    }
+  });
+  $('.opp').click(function() {
+    decimal = false;
+    if ($(this).attr('id') == 'C')
+      clear();
+    else {
+      valArray.push(Number(entryArray.join('')));
+      opArray.push($(this).attr('id'));
+      entryArray = [];
+
+      if (valArray.length == 2) {
+        result = doMath(opArray[0], valArray[0], valArray[1])
+        $('#screen').html(result);
+        valArray = [result];
+        opArray.shift();
+      }
+    }
+  });
+  $('#evenOdd').click(function(){
+    if (entryArray.length > 0 && entryArray[0] != '-') {
+      console.log('- added');
+      entryArray.unshift('-');
+      console.log(entryArray);
+      $('#screen').html('');
+      for (var i = 0; i < entryArray.length; i++)
+        $('#screen').append(entryArray[i]);
+    }
+    else if (entryArray.length > 0 && entryArray[0] == '-') {
+      console.log('- removed');
+      entryArray.shift();
+      $('#screen').html('');
+      for (var j = 0; j < entryArray.length; j++)
+        $('#screen').append(entryArray[j]);
+    }
+    else if (entryArray.length == 0)
+      if (valArray[0] != 0) {
+        valArray[0]*=-1;
+        $('#screen').html(valArray[0]);
+      }
+    });
+  $('#percent').click(function(){
+    var merge = 0;
+    if (entryArray.length > 0) {
+      $('#screen').html('');
+      merge = (Number(entryArray.join(''))/100).toPrecision(9);
+      entryArray = merge.split('');
+      for (var k = 0; k < entryArray.length; k++)
+        $('#screen').append(entryArray[k]);
+    }
+    else if (valArray.length != 0) {
+      valArray[0] = (valArray[0]/100);
+      merge = (valArray[0]+'').split('').slice(0,9).join('');
+      valArray[0] = Number(merge);
+      $('#screen').html(valArray[0]);
+    }
+
+  });
 });
