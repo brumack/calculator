@@ -85,19 +85,18 @@ $("document").ready(function() {
     if (oppLock == false) {
     oppLock = true;
     decimal = false;
-    if ($(this).attr('id') == 'C')
-      clear();
-    else {
-      valArray.push(Number(entryArray.join('')));
-      opArray.push($(this).attr('id'));
-      entryArray = [];
 
-      if (valArray.length == 2) {
-        result = doMath(opArray[0], valArray[0], valArray[1])
-        $('#screen').html(result);
-        valArray = [result];
-        opArray.shift();
-      }
+
+    valArray.push(Number(entryArray.join('')));
+    opArray.push($(this).attr('id'));
+    entryArray = [];
+
+    if (valArray.length == 2) {
+      result = doMath(opArray[0], valArray[0], valArray[1])
+      $('#screen').html(result);
+      valArray = [result];
+      opArray.shift();
+
     }
   }
   });
@@ -138,5 +137,8 @@ $("document").ready(function() {
       $('#screen').html(valArray[0]);
     }
 
+  });
+  $('#C').click(function() {
+    clear();
   });
 });
