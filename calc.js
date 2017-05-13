@@ -10,6 +10,7 @@ $("document").ready(function() {
   var entry = 0;
   var decimal = false;
   var result = 0;
+  var oppLock = false;
 
   var clear = function() {
     entryArray = [];
@@ -56,7 +57,7 @@ $("document").ready(function() {
   }
 
   $('.num').click(function() {
-
+    oppLock = false;
     if (opArray[0] == '=') {
       console.log('clear');
       clear();
@@ -81,6 +82,8 @@ $("document").ready(function() {
     }
   });
   $('.opp').click(function() {
+    if (oppLock == false) {
+    oppLock = true;
     decimal = false;
     if ($(this).attr('id') == 'C')
       clear();
@@ -96,6 +99,7 @@ $("document").ready(function() {
         opArray.shift();
       }
     }
+  }
   });
   $('#evenOdd').click(function(){
     if (entryArray.length > 0 && entryArray[0] != '-') {
