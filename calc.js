@@ -121,7 +121,7 @@ $("document").ready(function() {
     });
   $('#percent').click(function(){
     var merge = 0;
-    if (entryArray.length > 0) {
+    if (entryArray.length > 0 && entryArray.length + 2 < 12) {
       $('#screen').html('');
       entryArray = ((Number(entryArray.join(''))/100)+'').split('').slice(0,12);
       for (var k = 0; k < entryArray.length; k++)
