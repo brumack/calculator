@@ -19,21 +19,26 @@ $("document").ready(function() {
     $('#screen').html('0');
   }
   var doMath = function(operation, val1, val2) {
+    var answer = 0;
     switch(operation) {
       case '+': {
-        return (val1 + val2);
+        answer = ((val1 + val2) + '').split('').slice(0,12).join('');
+        return Number(answer);
         break;
       }
       case '-': {
-        return (val1 - val2);
+        answer =  ((val1 - val2) + '').split('').slice(0,12).join('');
+        return Number(answer);
         break;
       }
       case 'x': {
-        return (val1 * val2).toPrecision(9);
+        answer =  ((val1 * val2) + '').split('').slice(0,12).join('');
+        return Number(answer);
         break;
       }
       case '/': {
-        return (val1 / val2).toPrecision(9);
+        answer =  ((val1 / val2) + '').split('').slice(0,12).join('');
+        return Number(answer);
         break;
       }
       case '=': {
@@ -62,7 +67,7 @@ $("document").ready(function() {
 
     entry = $(this).attr('id');
 
-    if (entryArray.length < 10) {
+    if (entryArray.length < 12) {
       if (decimal === false && entry == ".") {
         decimal = true;
         $('#screen').append(entry);
@@ -125,7 +130,7 @@ $("document").ready(function() {
     }
     else if (valArray.length != 0) {
       valArray[0] = (valArray[0]/100);
-      merge = (valArray[0]+'').split('').slice(0,9).join('');
+      merge = (valArray[0]+'').split('').slice(0,12).join('');
       valArray[0] = Number(merge);
       $('#screen').html(valArray[0]);
     }
