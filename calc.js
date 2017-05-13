@@ -82,7 +82,7 @@ $("document").ready(function() {
     }
   });
   $('.opp').click(function() {
-    if (oppLock == false) {
+    if (oppLock == false || $(this).attr('ID') != '=') {
     oppLock = true;
     decimal = false;
 
