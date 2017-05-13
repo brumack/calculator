@@ -123,8 +123,7 @@ $("document").ready(function() {
     var merge = 0;
     if (entryArray.length > 0) {
       $('#screen').html('');
-      merge = (Number(entryArray.join(''))/100).toPrecision(9);
-      entryArray = merge.split('');
+      entryArray = ((Number(entryArray.join(''))/100)+'').split('').slice(0,12);
       for (var k = 0; k < entryArray.length; k++)
         $('#screen').append(entryArray[k]);
     }
